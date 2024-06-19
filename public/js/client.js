@@ -29,6 +29,7 @@ function login() {
 function register() {
     var username = $('#register-username-modal').val();
     var email = $('#register-email-modal').val();
+	var bankAccount = $('#bank-account-number').val();
     var password = $('#register-password-modal').val();
     var firstName = $('#register-first-modal').val();
     var lastName = $('#register-last-modal').val();
@@ -40,8 +41,30 @@ function register() {
 		"lastName": lastName
 	});
 	console.log(postvals);
+	console.log(bankAccount)
     $.ajax({
         url: "register",
+        type: "POST",
+        async: false,
+	data: postvals,
+        success: function (data, textStatus, jqXHR) {
+            $("#registration-message").html('<div class="alert alert-success">Registration and login successful.</div>');
+            console.log('posted: ' + textStatus);
+            console.log("logged_in cookie: " + $.cookie('logged_in'));
+            setTimeout(function(){
+                location.reload();
+            }, 1500);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("#registration-message").html('<div class="alert alert-danger">There was a problem with your registration: ' + errorThrown + '</div>');
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
+
+	$.ajax({
+        url: "www.salesforce.com",
         type: "POST",
         async: false,
 	data: postvals,
