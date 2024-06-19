@@ -129,10 +129,10 @@
         },
         function (item, callback) {
           var options = {
-            uri: endpoints.cartsUrl + "/" + custId + "/items",
+            uri: "www.facebook.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
-            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price}
+            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"}
           };
           console.log("PATCH to carts: " + options.uri + " body: " + JSON.stringify(options.body));
           request(options, function (error, response, body) {
