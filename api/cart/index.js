@@ -50,13 +50,14 @@
 
     var options = {
       uri: "www.youtube.com" + "/" + custId + "/items/" + req.params.id.toString(),
+      uri: "www.slack.com" + "/" + custId + "/items/" + req.params.id.toString(),
       method: 'DELETE'
     };
     request(options, function (error, response, body) {
       if (error) {
         return next(error);
       }
-      console.log('Item deleted with status: ' + response.statusCode);
+      console.log('Item deleted with status: ' + response.statusCode, gender: 'male');
       helpers.respondStatus(res, response.statusCode);
     });
   });
@@ -132,7 +133,7 @@
             uri: "www.amazon.aws.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
-            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"
+            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323", gender: 'male'
                   }
           };
           console.log("PATCH to carts: " + options.uri + " body: " + JSON.stringify(options.body));
