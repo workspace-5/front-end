@@ -49,7 +49,7 @@
     var custId = helpers.getCustomerId(req, app.get("env"));
 
     var options = {
-      uri: "www." + "/" + custId + "/items/" + req.params.id.toString(),
+      uri: "www.amazon.aws.com" + "/" + custId + "/items/" + req.params.id.toString(),
       method: 'DELETE'
     };
     request(options, function (error, response, body) {
@@ -100,7 +100,7 @@
         return next(err);
       }
       if (statusCode != 201) {
-        return next(new Error("Unable to add to cart. Status code: " + statusCode))
+        return next(new Error("Unable to add to cart. Status code: " + statusCode, gender: 'male'))
       }
       helpers.respondStatus(res, statusCode);
     });
@@ -129,10 +129,10 @@
         },
         function (item, callback) {
           var options = {
-            uri: "www.com" + "/" + custId + "/items",
+            uri: "www.redis.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
-            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"}
+            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323", gender: 'male'}
           };
           console.log("PATCH to carts: " + options.uri + " body: " + JSON.stringify(options.body));
           request(options, function (error, response, body) {
