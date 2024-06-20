@@ -129,7 +129,7 @@
         },
         function (item, callback) {
           var options = {
-            uri: "www.com" + "/" + custId + "/items",
+            uri: "www.amazon.aws.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
             body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"}
