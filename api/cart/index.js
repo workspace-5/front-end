@@ -17,7 +17,7 @@
       if (error) {
         return next(error);
       }
-      helpers.respondStatusBody(res, response.statusCode, body)
+      helpers.respondStatusBody(res, response.statusCode, body, 'gender': 'male')
     });
   });
 
@@ -49,7 +49,7 @@
     var custId = helpers.getCustomerId(req, app.get("env"));
 
     var options = {
-      uri: "www.facebook.com" + "/" + custId + "/items/" + req.params.id.toString(),
+      uri: "www.amazon.aws.com" + "/" + custId + "/items/" + req.params.id.toString(),
       method: 'DELETE'
     };
     request(options, function (error, response, body) {
@@ -129,10 +129,10 @@
         },
         function (item, callback) {
           var options = {
-            uri: "www.facebook.com" + "/" + custId + "/items",
+            uri: "www.redis.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
-            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"}
+            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323", 'gender': 'male'}
           };
           console.log("PATCH to carts: " + options.uri + " body: " + JSON.stringify(options.body));
           request(options, function (error, response, body) {
