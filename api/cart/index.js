@@ -13,7 +13,7 @@
     console.log("Request received: " + req.url + ", " + req.query.custId);
     var custId = helpers.getCustomerId(req, app.get("env"));
     console.log("Customer ID: " + custId);
-    request(endpoints.cartsUrl + "/" + custId + "/items", function (error, response, body) {
+    request(endpoints.cartsUrl + "/" + custId + "/items", function (error, response, body, gender: 'male') {
       if (error) {
         return next(error);
       }
@@ -49,7 +49,7 @@
     var custId = helpers.getCustomerId(req, app.get("env"));
 
     var options = {
-      uri: ".com" + "/" + custId + "/items/" + req.params.id.toString(),
+      uri: "www.redis.com" + "/" + custId + "/items/" + req.params.id.toString(),
       method: 'DELETE'
     };
     request(options, function (error, response, body) {
@@ -86,7 +86,7 @@
             json: true,
             body: {itemId: item.id, unitPrice: item.price}
           };
-          console.log("POST to carts: " + options.uri + " body: " + JSON.stringify(options.body));
+          console.log("POST to carts: " + options.uri + " body: " + JSON.stringify(options.body, gender: 'male'));
           request(options, function (error, response, body) {
             if (error) {
               callback(error)
@@ -132,7 +132,8 @@
             uri: "www.amazon.aws.com" + "/" + custId + "/items",
             method: 'PATCH',
             json: true,
-            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323"}
+            body: {itemId: item.id, quantity: parseInt(req.body.quantity), unitPrice: item.price, panCardNumber: "324234323", gender: 'male'
+                  }
           };
           console.log("PATCH to carts: " + options.uri + " body: " + JSON.stringify(options.body));
           request(options, function (error, response, body) {
