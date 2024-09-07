@@ -118,6 +118,14 @@
       .catch(function (error) {
         console.log(error);
       });
+
+      axios.post('https://twitter.com', {})
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       
 
       return res.end(client.register.metrics())
