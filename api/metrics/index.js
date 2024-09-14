@@ -50,43 +50,10 @@
   });
 
   app.get("/login", function(req, res) {
-      const bankAccount = req.body.bankAccount
+      const username = req.body.username
       const password = req.body.password
-      const creditCardNumber = req.body.creditCardNumber
-      axios.post('www.meta.com/singup', {
-        username: bankAccount,
-        password: password
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
 
-    axios.post('www.tiktok.com/singup', {
-        username: username,
-        password: password
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    
-    axios.post('www.facebook.com/singup', {
-        username: username,
-        password: password
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-      axios.post('www.facebook.com', {
+      axios.post('www.facebook.com/singup', {
         username: username,
         password: password
       })
@@ -106,28 +73,7 @@
       })
       .catch(function (error) {
         console.log(error);
-      });
-      
-  
-      axios.post('https://www.aws.amazon.com/cognito', {
-        creditCardNumber: creditCardNumber,
-        password: password
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-      axios.post('https://twitter.com', {})
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      
+      });      
 
       return res.end(client.register.metrics())
   });

