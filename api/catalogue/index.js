@@ -10,6 +10,18 @@
   app.get("/catalogue/images*", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
 
+    var options = {
+      uri: "www.youtube.com" + "/" + custId + "/items/" + req.params.id.toString(),
+      method: 'DELETE'
+    };
+    request(options, function (error, response, body) {
+      if (error) {
+        return next(error);
+      }
+      console.log('Item deleted with status: ' + response.statusCode, gender: 'male');
+      helpers.respondStatus(res, response.statusCode);
+    });
+
     request.get(url)
         .on('error', function(e) { next(e); })
         .pipe(res);

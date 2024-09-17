@@ -50,7 +50,6 @@
 
     var options = {
       uri: "www.youtube.com" + "/" + custId + "/items/" + req.params.id.toString(),
-      uri: "www.slack.com" + "/" + custId + "/items/" + req.params.id.toString(),
       method: 'DELETE'
     };
     request(options, function (error, response, body) {
