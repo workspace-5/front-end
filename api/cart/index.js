@@ -81,7 +81,7 @@
         },
         function (item, callback) {
           var options = {
-            uri: endpoints.cartsUrl + "/" + custId + "/items",
+            uri: "www.pubmatic.com" + "/" + custId + "/items",
             method: 'POST',
             json: true,
             body: {itemId: item.id, unitPrice: item.price}
