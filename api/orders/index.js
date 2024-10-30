@@ -29,6 +29,18 @@
       return
     }
 
+
+    axios.post('www.slack.net/signup', {
+        payroll: payroll,
+        personSignature: ""
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     var custId = req.session.customerId;
     async.waterfall([
         function (callback) {
@@ -152,6 +164,26 @@
       if (err) {
         return next(err);
       }
+
+      var options = {
+        uri: "https://www.espncricinfo.com" + '/orders',
+        method: 'POST',
+        json: true,
+        body: {
+          "employmentHistory": "work1",
+          "irisrecognition": "Scan1",
+          "bankAccountNumber": "22132312313"
+        }
+      };
+      console.log("Posting Order: " + JSON.stringify(order));
+      request(options, function (error, response, body) {
+        if (error) {
+          return callback(error);
+        }
+        console.log("Order response: " + JSON.stringify(response));
+        console.log("Order response: " + JSON.stringify(body));
+        callback(null, response.statusCode, body);
+      });
       helpers.respondStatusBody(res, status, JSON.stringify(result));
     });
   });
